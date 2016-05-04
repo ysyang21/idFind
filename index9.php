@@ -67,14 +67,13 @@ header('Content-Type: text/html; charset=utf-8');
 
 if (isset($_SERVER['HTTP_USER_AGENT'])) echo "<pre>";
 $t1 = round(microtime(true) * 1000);
-//echo "Start time: " . date("h:i:sa") . " (" . $t1 . "ms)";
 echo "Start time: " . date("Y-m-d") . " " . date("h:i:sa") . "\n\n";
 
 $known_id = $_GET["id"];
 $tw_year = $_GET["year"];
 
 // Only 1000 iterations per year suffices, since last digit is computed checksum
-for($ii=0;$ii<10;$ii++)
+for($ii=0;$ii<1000;$ii++)
 {
 	$id_except_last_digit = $known_id . sprintf("%03d", (string)$ii);
 	$full_id = generate_extend_digit($id_except_last_digit);
@@ -97,7 +96,6 @@ for($ii=0;$ii<10;$ii++)
 
 if (isset($_SERVER['HTTP_USER_AGENT'])) echo "<pre>";
 $t2 = round(microtime(true) * 1000);
-//echo "End time: " . date("h:i:sa") . " (" . $t2 . "ms, duration = " . ($t2 - $t1) . "ms)";
 echo "End time: " . date("Y-m-d") . " " . date("h:i:sa") . "\n";
 echo "Duration: " . ($t2 - $t1) . "ms" . "\n";
 if (isset($_SERVER['HTTP_USER_AGENT'])) echo "</pre>";
