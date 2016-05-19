@@ -90,7 +90,7 @@ for($ii=0;$ii<1000;$ii++)
 	{
 		echo $full_id . "@" . $tw_year . "-> ok!\n";
 		echo $response['FILE'];
-		break;
+		//break;
 	}
 }
 
